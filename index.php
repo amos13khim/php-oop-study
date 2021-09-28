@@ -4,9 +4,15 @@
 // ===========================================================
 echo "<hr>";
 require 'polymorphism/A.php';
+require 'polymorphism/B.php';
 $a1 = new A();
 var_dump($a1 instanceof A);
 echo '<br>';
+$b1 = new B();
+var_dump($b1 instanceof A);
+var_dump($b1 instanceof B);
+echo "<p>" . $b1->sayHello() . "</p>";
+echo $b1->method2();
 
 // ===========================================================
 // Интерфейсы КИТ 2

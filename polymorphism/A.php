@@ -4,6 +4,15 @@ class A
 {
     public function sayHello()
     {
-        echo "Hello, I am A";
+        return "Hello, I am A";
+    }
+
+    public function method1()
+    {
+        return $this->method2();
+    }
+
+    public function method2() {
+        return 'I am A';
     }
 }
