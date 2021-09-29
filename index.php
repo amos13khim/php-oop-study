@@ -1,5 +1,23 @@
 <?php
 // ===========================================================
+// Абстрактные классы
+// ===========================================================
+echo "<hr>";
+require 'abstract-class/AbstractClass.php';
+require 'abstract-class/ClassA.php';
+require 'abstract-class/AbstractHuman.php';
+require 'abstract-class/EnglishHuman.php';
+require 'abstract-class/RussianHuman.php';
+
+$objectA1 = new ClassA('кек');
+$objectA1->printValue();
+
+$englishHuman = new EnglishHuman('John');
+$russianHuman = new RussianHuman('Иван');
+echo "<p>" . $englishHuman->introduceYourself() . "</p>";
+echo "<p>" . $russianHuman->introduceYourself() . "</p>";
+
+// ===========================================================
 // Полиморфизм КИТ 3
 // ===========================================================
 echo "<hr>";
