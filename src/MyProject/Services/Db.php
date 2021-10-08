@@ -5,7 +5,10 @@ class Db
     /** @var \PDO */
     private $pdo;
 
-    public function __construct()
+    /** @var self */
+    private static $instance;
+
+    private function __construct()
     {
         $dbOptions = (require __DIR__ . '/../../settings.php')['db'];
         $this->pdo = new \PDO(
@@ -15,6 +18,18 @@ class Db
         );
 
         $this->pdo->exec('SET NAMES UTF8');
+    }
+
+    /**
+     * @return static
+     */
+    public static function getInstance() : self
+    {
+        if( self::$instance === null ) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
     }
 
     public function query(string $sql, array $params = [], string $className = 'stdClass') : ?array
@@ -28,5 +43,4 @@ class Db
 
         return $sth->fetchAll(\PDO::FETCH_CLASS, $className);
     }
-
 }
