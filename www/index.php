@@ -22,9 +22,8 @@ if( ! $isRouteFound ) {
 }
 
 unset($matches[0]);
-
 $controllerName = $controllerAndAction[0];
 $actionName = $controllerAndAction[1];
 
-$controller = new $controllerName();
+$controller = new $controllerName();;
 $controller->$actionName(...$matches);

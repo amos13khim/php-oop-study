@@ -20,16 +20,51 @@ class ArticlesController
     {
         $article = Article::getById($articleId);
 
-       if( $article === [] ) {
+        $reflerctor = new \ReflectionObject($article);
+        $properties = $reflerctor->getProperties();
+        $propertiesNames = [];
+        foreach ($properties as $property) {
+            $propertiesNames[] = $property->getName();
+        }
+
+        if( $article === [] ) {
            $this->view->renderHtml('errors/404.php', [],404);
            return;
-       }
+        }
 
-       $this->view->renderHtml(
+        $this->view->renderHtml(
            'articles/view.php',
            [
                'article' => $article
            ]
-       );
+        );
+    }
+
+    public function edit(int $articleId) : void
+    {
+        $article = Article::getById($articleId);
+
+        if( $article === [] ) {
+            $this->view->renderHtml('errors/404.php', [],404);
+            return;
+        }
+
+        $article->setName('New Article Name');
+        $article->setText('New Article Text');
+
+        $article->save();
+    }
+
+    public function add() : void
+    {
+        $author = User::getById(1);
+
+        $article = new Article();
+        $article->setAuthor($author);
+        $article->setName('Новое название статьи 3');
+        $article->setText('Новый текст статьи 3');
+
+        $article->save();
+        xdebug_var_dump($article);
     }
 }
