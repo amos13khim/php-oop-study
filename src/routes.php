@@ -9,5 +9,7 @@ return [
     '~^$~' => [\MyProject\Controllers\MainController::class, 'main'],
     '~^/$~' => [\MyProject\Controllers\MainController::class, 'main'],
     '~^articles/add$~' => [\MyProject\Controllers\ArticlesController::class, 'add'],
-    '~^articles/add/$~' => [\MyProject\Controllers\ArticlesController::class, 'add']
+    '~^articles/add/$~' => [\MyProject\Controllers\ArticlesController::class, 'add'],
+    '~^articles/(\d+)/delete$~' => [\MyProject\Controllers\ArticlesController::class, 'delete'],
+    '~^articles/(\d+)/delete/$~' => [\MyProject\Controllers\ArticlesController::class, 'delete'],
 ];

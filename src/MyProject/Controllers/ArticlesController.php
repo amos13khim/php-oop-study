@@ -8,7 +8,7 @@ use \MyProject\Models\Articles\Article;
 
 class ArticlesController
 {
-    /** @var View  */
+    /** @var View */
     private $view;
 
     public function __construct()
@@ -27,25 +27,25 @@ class ArticlesController
             $propertiesNames[] = $property->getName();
         }
 
-        if( $article === [] ) {
-           $this->view->renderHtml('errors/404.php', [],404);
-           return;
+        if ($article === []) {
+            $this->view->renderHtml('errors/404.php', [], 404);
+            return;
         }
 
         $this->view->renderHtml(
-           'articles/view.php',
-           [
-               'article' => $article
-           ]
+            'articles/view.php',
+            [
+                'article' => $article
+            ]
         );
     }
 
-    public function edit(int $articleId) : void
+    public function edit(int $articleId): void
     {
         $article = Article::getById($articleId);
 
-        if( $article === [] ) {
-            $this->view->renderHtml('errors/404.php', [],404);
+        if ($article === []) {
+            $this->view->renderHtml('errors/404.php', [], 404);
             return;
         }
 
@@ -55,7 +55,7 @@ class ArticlesController
         $article->save();
     }
 
-    public function add() : void
+    public function add(): void
     {
         $author = User::getById(1);
 
@@ -65,6 +65,17 @@ class ArticlesController
         $article->setText('Новый текст статьи 3');
 
         $article->save();
+        xdebug_var_dump($article);
+    }
+
+    public function delete($articleId): void
+    {
+        $article = Article::getById($articleId);
+        if($article === []) {
+            $this->view->renderHtml(__DIR__ . '/../../../templates/errors/404.php');
+            return;
+        }
+        $article->delete();
         xdebug_var_dump($article);
     }
 }

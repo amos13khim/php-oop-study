@@ -128,6 +128,13 @@ abstract class ActiveRecordEntity
         $db->query($sql, $params2values, static::class);
     }
 
+    public function delete() : void
+    {
+        $db = Db::getInstance();
+        $db->query('DELETE FROM `' . static::getTableName() .'` WHERE id=:id',[':id'=>$this->getId()], static::class);
+        $this->id = null;
+    }
+
     private function refresh() : void
     {
         $lastCreatedObject = static::getById($this->getId());
