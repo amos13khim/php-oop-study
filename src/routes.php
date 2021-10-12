@@ -12,4 +12,6 @@ return [
     '~^articles/add/$~' => [\MyProject\Controllers\ArticlesController::class, 'add'],
     '~^articles/(\d+)/delete$~' => [\MyProject\Controllers\ArticlesController::class, 'delete'],
     '~^articles/(\d+)/delete/$~' => [\MyProject\Controllers\ArticlesController::class, 'delete'],
+    '~^users/register~' => [\MyProject\Controllers\UsersController::class, 'signup'],
+    '~^users/register/$~' => [\MyProject\Controllers\UsersController::class, 'signup'],
 ];
