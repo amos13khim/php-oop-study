@@ -19,6 +19,6 @@ class EmailSender
         $body = ob_get_contents();
         ob_end_clean();
 
-        mail($receiver->getEmail(), $subject, $body, 'Content-Type: text/html; charset=UTF-8');
+        mail($receiver->getEmail(), $subject, $body, 'Content-Type: text/html; charset=UTF-8;');
     }
 }

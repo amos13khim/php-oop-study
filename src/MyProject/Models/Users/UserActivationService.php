@@ -6,7 +6,7 @@ use MyProject\Services\Db;
 
 class UserActivationService
 {
-    private const TABLE_NAME = 'users_activation_code';
+    private const TABLE_NAME = 'users_activation_codes';
 
     public static function createActivationCode(User $user) : string
     {
