@@ -1,6 +1,2 @@
-/.idea/.gitignore
-/.idea/modules.xml
-/.idea/php.xml
-/.idea/php-enhance.iml
-/.idea/vcs.xml
-/.idea/yii2settings.xml
+/part1
+/.idea

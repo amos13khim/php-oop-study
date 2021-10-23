@@ -50,7 +50,7 @@ abstract class ActiveRecordEntity
         return $db->query('SELECT * FROM `' . static::getTableName() . '`;', [], static::class);
     }
 
-    public static function getById(int $id) : ?static
+    public static function getById(int $id) : ?self
     {
         $db = Db::getInstance();
         $entities = $db->query(
@@ -144,7 +144,7 @@ abstract class ActiveRecordEntity
     }
 
 
-    public static function findOneByColumn(string $columnName, $value) :?static
+    public static function findOneByColumn(string $columnName, $value) :?self
     {
         $db = Db::getInstance();
         $result = $db->query(
