@@ -14,4 +14,5 @@ return [
     '~^articles/(\d+)/delete/$~' => [\MyProject\Controllers\ArticlesController::class, 'delete'],
     '~^users/register~' => [\MyProject\Controllers\UsersController::class, 'signup'],
     '~^users/register/$~' => [\MyProject\Controllers\UsersController::class, 'signup'],
+    '~^users/(\d+)/activate/(.+)$~' => [\MyProject\Controllers\UsersController::class, 'activate']
 ];
