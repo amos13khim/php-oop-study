@@ -5,6 +5,7 @@ namespace MyProject\Controllers;
 use MyProject\Exceptions\InvalidArgumentException;
 use MyProject\Models\Users\User;
 use MyProject\Models\Users\UserActivationService;
+use MyProject\Models\Users\UsersAuthService;
 use MyProject\Services\EmailSender;
 use \MyProject\View\View;
 class UsersController
@@ -50,6 +51,22 @@ class UsersController
             $user->activate();
             echo 'OK!';
         }
+    }
+
+    public function login()
+    {
+        if(!empty($_POST)) {
+            try {
+                $user = User::login($_POST);
+                UsersAuthService::createToken($user);
+                header('location: /');
+                exit();
+            } catch(InvalidArgumentException $e) {
+                $this->view->renderHtml('users/login.php', ['error'=>$e->getMessage()]);
+                return;
+            }
+        }
+        $this->view->renderHtml('users/login.php');
     }
 
 }
